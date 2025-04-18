@@ -19,9 +19,15 @@ class LoginTexts extends ChangeNotifier {
     String? notHaveAnAccount,
     String? alreadyHaveAnAccount,
     String? nameHint,
+    String? phoneHint,
+    String? accountHint,
     String? signupEmailHint,
+    String? signupPhoneHint,
+    String? signupAccountHint,
     String? signupPasswordHint,
     String? loginEmailHint,
+    String? loginPhoneHint,
+    String? loginAccountHint,
     String? loginPasswordHint,
     String? confirmPasswordHint,
     String? passwordMatchingError,
@@ -48,9 +54,15 @@ class LoginTexts extends ChangeNotifier {
         _notHaveAnAccount = notHaveAnAccount,
         _alreadyHaveAnAccount = alreadyHaveAnAccount,
         _nameHint = nameHint,
+        _phoneHint = phoneHint,
+        _accountHint = accountHint,
         _signupEmailHint = signupEmailHint,
+        _signupPhoneHint = signupPhoneHint,
+        _signupAccountHint = signupAccountHint,
         _signupPasswordHint = signupPasswordHint,
         _loginEmailHint = loginEmailHint,
+        _loginPhoneHint = loginPhoneHint,
+        _loginAccountHint = loginAccountHint,
         _loginPasswordHint = loginPasswordHint,
         _confirmPasswordHint = confirmPasswordHint,
         _passwordMatchingError = passwordMatchingError,
@@ -136,11 +148,15 @@ class LoginTexts extends ChangeNotifier {
   /// Default value is given in [_defaultNameHint].
   /// Custom value in the constructor is assigned to [_nameHint].
   String get nameHint => _nameHint ?? _defaultNameHint;
+  String get phoneHint => _phoneHint ?? _defaultPhoneHint;
+  String get accountHint => _accountHint ?? _defaultAccountHint;
 
   /// Hint text for email text form field.
   /// Default value is given in [_defaultSignupEmailHint].
-  /// Custom value in the constructor is assigned to [_signupEmailHint].
+  /// Custom value in the const
   String get signupEmailHint => _signupEmailHint ?? _defaultSignupEmailHint;
+  String get signupPhoneHint => _signupPhoneHint ?? _defaultSignupPhoneHint;
+  String get signupAccountHint => _signupAccountHint ?? _defaultSignupAccountHint;
 
   /// Hint text for password text form field.
   /// Default value is given in [_defaultSignupPasswordHint].
@@ -152,6 +168,8 @@ class LoginTexts extends ChangeNotifier {
   /// Default value is given in [_defaultLoginEmailHint].
   /// Custom value in the constructor is assigned to [_loginEmailHint].
   String get loginEmailHint => _loginEmailHint ?? _defaultLoginEmailHint;
+  String get loginPhoneHint => _loginPhoneHint ?? _defaultLoginPhoneHint;
+  String get loginAccountHint => _loginAccountHint ?? _defaultLoginAccountHint;
 
   /// Hint text for password text form field.
   /// Default value is given in [_defaultLoginPasswordHint].
@@ -234,9 +252,15 @@ class LoginTexts extends ChangeNotifier {
   static const String _defaultAlreadyHaveAnAccount = 'Already have an account?';
 
   static const String _defaultNameHint = 'Name';
+  static const String _defaultPhoneHint = 'Phone';
+  static const String _defaultAccountHint = 'Account eg:  user_abcd1234';
   static const String _defaultSignupEmailHint = 'Email';
+  static const String _defaultSignupPhoneHint = 'Phone number';
+  static const String _defaultSignupAccountHint = 'Account';
   static const String _defaultSignupPasswordHint = 'Password';
   static const String _defaultLoginEmailHint = 'Email';
+  static const String _defaultLoginPhoneHint = 'Phone number';
+  static const String _defaultLoginAccountHint = 'Account';
   static const String _defaultLoginPasswordHint = 'Password';
   static const String _defaultConfirmPasswordHint = 'Confirm Password';
 
@@ -298,15 +322,21 @@ class LoginTexts extends ChangeNotifier {
 
   /// The hint text for name text form field.
   final String? _nameHint;
+  final String? _phoneHint;
+  final String? _accountHint;
 
   /// The hint text for email text form field.
   final String? _signupEmailHint;
+  final String? _signupPhoneHint;
+  final String? _signupAccountHint;
 
   /// The hint text for password text form field.
   final String? _signupPasswordHint;
 
   /// The hint text for email text form field.
   final String? _loginEmailHint;
+  final String? _loginPhoneHint;
+  final String? _loginAccountHint;
 
   /// The hint text for password text form field.
   final String? _loginPasswordHint;

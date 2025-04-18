@@ -146,6 +146,8 @@ class LoginTheme extends LoginViewTheme with ChangeNotifier {
 
   @override
   Widget? get nameIcon => currentTheme.nameIcon;
+  Widget? get phoneIcon => currentTheme.phoneIcon;
+  Widget? get accountIcon => currentTheme.accountIcon;
 
   @override
   Widget? get passwordIcon => currentTheme.passwordIcon;

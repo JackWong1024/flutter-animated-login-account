@@ -431,6 +431,20 @@ class _FormState extends State<_Form> {
     final isAnimatedLogin =
         context.select<Auth, bool>((Auth auth) => auth.isAnimatedLogin);
     return <Widget>[
+      //account
+      CustomTextFormField(
+        controller: auth.accountController,
+        hintText: auth.isSignup
+            ? loginTexts.signupAccountHint
+            : loginTexts.loginAccountHint,
+        prefixIcon: Icons.person_add_outlined,
+        prefixWidget: loginTheme.accountIcon,
+        validator: auth.accountValidator,
+        textInputAction: TextInputAction.next,
+        onChanged: auth.setEmail,
+        autofillHints: const <String>[AutofillHints.username],
+        textInputType: TextInputType.text,
+      ),
       if (!isAnimatedLogin && auth.signUpMode != SignUpModes.confirmPassword)
         CustomTextFormField(
           controller: auth.nameController,
@@ -447,6 +461,21 @@ class _FormState extends State<_Form> {
           ],
           textInputType: TextInputType.name,
         ),
+      if (!isAnimatedLogin && auth.signUpMode != SignUpModes.confirmPassword)
+      CustomTextFormField(
+        controller: auth.phoneController,
+        hintText: auth.isSignup
+            ? loginTexts.signupPhoneHint
+            : loginTexts.loginPhoneHint,
+        prefixIcon: Icons.phone_iphone_outlined,
+        prefixWidget: loginTheme.phoneIcon,
+        validator: auth.phoneValidator,
+        textInputAction: TextInputAction.next,
+        onChanged: auth.setEmail,
+        autofillHints: const <String>[AutofillHints.telephoneNumber],
+        textInputType: TextInputType.phone,
+      ),
+      if (!isAnimatedLogin && auth.signUpMode != SignUpModes.confirmPassword)
       CustomTextFormField(
         controller: auth.emailController,
         hintText: auth.isSignup

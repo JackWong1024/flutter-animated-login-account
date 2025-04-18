@@ -20,6 +20,14 @@ class Validators {
   static const String _emailRegex =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
+  /// Regex for account input.
+  static const String _accountRegex =
+      r'^\S[a-zA-Z0-9\s]*\S$';
+
+  /// Regex for phone input.
+  static const String _phoneRegex =
+      r'^(?:\+86|86)?1[3-9]\d{9}$|^(?:\+44|44)?7\d{9}$';
+
   /// Validation for email, checks firstly the length and then the content.
   String? email(String? email) {
     var errorMessage = _lengthCheck(email, validator?.length ?? 3);
@@ -34,7 +42,30 @@ class Validators {
     }
     return null;
   }
-
+  String? phone(String? phone) {
+    var errorMessage = _lengthCheck(phone, validator?.length ?? 10); // 根据需要调整长度
+    if (errorMessage != null) return errorMessage;
+    errorMessage = _runValidations(phone);
+    if (errorMessage != null) return errorMessage;
+    final isValid = RegExp(_phoneRegex).hasMatch(phone!);
+    if (!isValid) {
+      const defaultMessage = 'Please enter a valid phone number';
+      return validator?.validatorCallback?.call(phone) ?? defaultMessage;
+    }
+    return null;
+  }
+  String? account(String? account) {
+    var errorMessage = _lengthCheck(account, validator?.length ?? 1); // 根据需要调整长度
+    if (errorMessage != null) return errorMessage;
+    errorMessage = _runValidations(account);
+    if (errorMessage != null) return errorMessage;
+    final isValid = RegExp(_accountRegex).hasMatch(account!);
+    if (!isValid) {
+      const defaultMessage = 'Please enter a valid account';
+      return validator?.validatorCallback?.call(account) ?? defaultMessage;
+    }
+    return null;
+  }
   /// Validation for password, checks firstly the length and then the content.
   /// Uses [_spaceCheck], [_upperCaseCheck], [_lowerCaseCheck], and
   /// [_numberCheck] and returns corresponding error message.

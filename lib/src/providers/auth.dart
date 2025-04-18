@@ -17,6 +17,8 @@ class Auth extends ChangeNotifier {
     this.socialLogins = const <SocialLogin>[],
     this.onAuthModeChange,
     this.validateName = true,
+    this.validatePhone = false,
+    this.validateAccount = true,
     this.validateEmail = true,
     this.validatePassword = true,
     this.validateCheckbox = true,
@@ -24,9 +26,13 @@ class Auth extends ChangeNotifier {
     this.checkboxCallback,
     bool hasPrivacyPolicy = false,
     ValidatorModel? nameValidator,
+    ValidatorModel? phoneValidator,
+    ValidatorModel? accountValidator,
     ValidatorModel? emailValidator,
     ValidatorModel? passwordValidator,
     TextEditingController? nameController,
+    TextEditingController? phoneController,
+    TextEditingController? accountController,
     TextEditingController? emailController,
     TextEditingController? passwordController,
     TextEditingController? confirmPasswordController,
@@ -38,12 +44,16 @@ class Auth extends ChangeNotifier {
   })  : _formKey = formKey,
         _signUpMode = signUpMode ?? SignUpModes.both,
         _nameController = nameController ?? TextEditingController(text: ''),
+        _phoneController = phoneController ?? TextEditingController(text: ''),
+        _accountController = accountController ?? TextEditingController(text: ''),
         _emailController = emailController ?? TextEditingController(text: ''),
         _passwordController =
             passwordController ?? TextEditingController(text: ''),
         _confirmPasswordController =
             confirmPasswordController ?? TextEditingController(text: ''),
         _nameValidator = nameValidator,
+        _phoneValidator = phoneValidator,
+        _accountValidator = accountValidator,
         _emailValidator = emailValidator,
         _passwordValidator = passwordValidator,
         _hasPrivacyPolicy = hasPrivacyPolicy {
@@ -129,8 +139,10 @@ class Auth extends ChangeNotifier {
   /// Combination of isReverse and initial mode values.
   bool get isAnimatedLogin => !_isReverse ^ (_initialMode == AuthMode.login);
 
-  /// Username in the text controller.
+
   String? username;
+  String? phone;
+  String? accout;
 
   /// Email user entered in the text controller.
   String? email;
@@ -141,9 +153,10 @@ class Auth extends ChangeNotifier {
   /// Confirm password text in the text controller.
   String? confirmPassword;
 
-  /// Sets the username.
-  // ignore: use_setters_to_change_properties
+
   void setUsername(String? newUsername) => username = newUsername;
+  void setPhone(String? newPhone) => phone = newPhone;
+  void setAccount(String? newAccount) => accout = newAccount;
 
   /// Sets the email.
   // ignore: use_setters_to_change_properties
@@ -185,12 +198,16 @@ class Auth extends ChangeNotifier {
   CancelableOperation<dynamic>? cancelableOperation;
 
   final TextEditingController _nameController;
+  final TextEditingController _phoneController;
+  final TextEditingController _accountController;
   final TextEditingController _emailController;
   final TextEditingController _passwordController;
   final TextEditingController _confirmPasswordController;
 
-  /// Custom input validator for name field.
+
   final ValidatorModel? _nameValidator;
+  final ValidatorModel? _phoneValidator;
+  final ValidatorModel? _accountValidator;
 
   /// Custom input validator for email field.
   final ValidatorModel? _emailValidator;
@@ -198,8 +215,10 @@ class Auth extends ChangeNotifier {
   /// Custom input validator for password field.
   final ValidatorModel? _passwordValidator;
 
-  /// Indicates whether the name field should be validated.
+
   final bool validateName;
+  final bool validatePhone;
+  final bool validateAccount;
 
   /// Indicates whether the email field should be validated.
   final bool validateEmail;
@@ -223,16 +242,24 @@ class Auth extends ChangeNotifier {
   void setPasswordValue(String? value) =>
       _passwordController.value = TextEditingValue(text: value ?? '');
 
-  /// Sets the username value.
+
   void setUsernameValue(String? value) =>
       _nameController.value = TextEditingValue(text: value ?? '');
+
+  void setPhoneValue(String? value) =>
+      _phoneController.value = TextEditingValue(text: value ?? '');
+
+  void setAccountValue(String? value) =>
+      _accountController.value = TextEditingValue(text: value ?? '');
 
   /// Sets the confirm password value.
   void setConfirmPasswordValue(String? value) =>
       _confirmPasswordController.value = TextEditingValue(text: value ?? '');
 
-  /// Optional TextEditingController for name input field.
+
   TextEditingController get nameController => _nameController;
+  TextEditingController get phoneController => _phoneController;
+  TextEditingController get accountController => _accountController;
 
   /// Optional TextEditingController for email input field.
   TextEditingController get emailController => _emailController;
@@ -244,8 +271,7 @@ class Auth extends ChangeNotifier {
   TextEditingController get confirmPasswordController =>
       _confirmPasswordController;
 
-  /// Enum to determine which text form fields should be displayed in addition
-  /// to the email and password fields: Name / Confirm Password / Both
+
   SignUpModes get signUpMode => _signUpMode;
 
   final GlobalKey<FormState> _formKey;
@@ -272,7 +298,7 @@ class Auth extends ChangeNotifier {
 
   Future<String?> _loginResult() async {
     final loginData = LoginData(
-      email: _emailController.text,
+      account: _accountController.text,
       password: _passwordController.text,
     );
     return onLogin(loginData);
@@ -281,6 +307,8 @@ class Auth extends ChangeNotifier {
   Future<String?> _signupResult() async {
     final signupData = SignUpData(
       name: _nameController.text,
+      phone: _phoneController.text,
+      account: _accountController.text,
       email: _emailController.text,
       password: _passwordController.text,
       confirmPassword: _confirmPasswordController.text,
@@ -296,10 +324,22 @@ class Auth extends ChangeNotifier {
     return onSignup(signupData);
   }
 
-  /// Name validator.
+
   FormFieldValidator<String?>? get nameValidator => validateName
       ? (_nameValidator?.customValidator ??
           Validators(validator: _nameValidator).name)
+      : null;
+
+
+  FormFieldValidator<String?>? get phoneValidator => validatePhone
+      ? (_phoneValidator?.customValidator ??
+      Validators(validator: _phoneValidator).phone)
+      : null;
+
+
+  FormFieldValidator<String?>? get accountValidator => validateAccount
+      ? (_accountValidator?.customValidator ??
+      Validators(validator: _accountValidator).account)
       : null;
 
   /// Email validator.
@@ -314,8 +354,8 @@ class Auth extends ChangeNotifier {
           Validators(
             validator: _passwordValidator ??
                 const ValidatorModel(
-                  checkLowerCase: true,
-                  checkUpperCase: true,
+                  checkLowerCase: false,
+                  checkUpperCase: false,
                   checkNumber: true,
                   checkSpace: true,
                 ),

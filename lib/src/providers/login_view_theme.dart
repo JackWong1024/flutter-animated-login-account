@@ -12,6 +12,8 @@ class LoginViewTheme {
     this.welcomeDescriptionStyle,
     this.changeActionTextStyle,
     this.useEmailStyle,
+    this.usePhoneStyle,
+    this.useAccountStyle,
     this.forgotPasswordStyle,
     this.hintTextStyle,
     this.errorTextStyle,
@@ -19,6 +21,8 @@ class LoginViewTheme {
     this.textFormFieldDeco,
     this.nameIcon,
     this.emailIcon,
+    this.phoneIcon,
+    this.accountIcon,
     this.passwordIcon,
     this.formFieldElevation,
     this.formFieldBackgroundColor,
@@ -70,6 +74,8 @@ class LoginViewTheme {
     this.changeActionPadding,
     this.changeActionButtonPadding,
     this.useEmailPadding,
+    this.usePhonePadding,
+    this.useAccountPadding,
     this.socialLoginPadding,
     this.formTitlePadding,
     this.actionButtonPadding,
@@ -145,6 +151,8 @@ class LoginViewTheme {
 
   /// Text style for the use email text of form part.
   final TextStyle? useEmailStyle;
+  final TextStyle? usePhoneStyle;
+  final TextStyle? useAccountStyle;
 
   /// Text style for the forgot password CTA of form part.
   final TextStyle? forgotPasswordStyle;
@@ -170,8 +178,14 @@ class LoginViewTheme {
   /// Prefix widget for name text form field.
   final Widget? nameIcon;
 
+
+
   /// Prefix widget for email text form field.
   final Widget? emailIcon;
+
+  final Widget? phoneIcon;
+
+  final Widget? accountIcon;
 
   /// Prefix widget for password text form field.
   final Widget? passwordIcon;
@@ -335,6 +349,8 @@ class LoginViewTheme {
 
   /// Padding around the use email text.
   final EdgeInsets? useEmailPadding;
+  final EdgeInsets? usePhonePadding;
+  final EdgeInsets? useAccountPadding;
 
   /// Padding around the social login options.
   final EdgeInsets? socialLoginPadding;
@@ -355,6 +371,8 @@ class LoginViewTheme {
     TextStyle? welcomeDescriptionStyle,
     TextStyle? changeActionTextStyle,
     TextStyle? useEmailStyle,
+    TextStyle? usePhoneStyle,
+    TextStyle? useAccountStyle,
     TextStyle? forgotPasswordStyle,
     TextStyle? hintTextStyle,
     TextStyle? errorTextStyle,
@@ -364,6 +382,8 @@ class LoginViewTheme {
     InputDecoration? textFormFieldDeco,
     Widget? nameIcon,
     Widget? emailIcon,
+    Widget? poneIcon,
+    Widget? accountIcon,
     Widget? passwordIcon,
     double? formFieldElevation,
     Color? formFieldBackgroundColor,
@@ -418,6 +438,8 @@ class LoginViewTheme {
     EdgeInsets? changeActionPadding,
     EdgeInsets? changeActionButtonPadding,
     EdgeInsets? useEmailPadding,
+    EdgeInsets? usePhonePadding,
+    EdgeInsets? useAccountPadding,
     EdgeInsets? socialLoginPadding,
     EdgeInsets? formTitlePadding,
     EdgeInsets? actionButtonPadding,
@@ -431,6 +453,10 @@ class LoginViewTheme {
         changeActionTextStyle:
             changeActionTextStyle ?? this.changeActionTextStyle,
         useEmailStyle: useEmailStyle ?? this.useEmailStyle,
+
+        usePhoneStyle: usePhoneStyle ?? this.usePhoneStyle,
+
+        useAccountStyle: useAccountStyle ?? this.useAccountStyle,
         forgotPasswordStyle: forgotPasswordStyle ?? this.forgotPasswordStyle,
         hintTextStyle: hintTextStyle ?? this.hintTextStyle,
         errorTextStyle: errorTextStyle ?? this.errorTextStyle,
@@ -438,6 +464,8 @@ class LoginViewTheme {
         textFormFieldDeco: textFormFieldDeco ?? this.textFormFieldDeco,
         nameIcon: nameIcon ?? this.nameIcon,
         emailIcon: emailIcon ?? this.emailIcon,
+        phoneIcon: phoneIcon ?? this.phoneIcon,
+        accountIcon: accountIcon ?? this.accountIcon,
         passwordIcon: passwordIcon ?? this.passwordIcon,
         formFieldElevation: formFieldElevation ?? this.formFieldElevation,
         formFieldBackgroundColor:
@@ -503,6 +531,8 @@ class LoginViewTheme {
         changeActionButtonPadding:
             changeActionButtonPadding ?? this.changeActionButtonPadding,
         useEmailPadding: useEmailPadding ?? this.useEmailPadding,
+        usePhonePadding: usePhonePadding ?? this.usePhonePadding,
+        useAccountPadding: useAccountPadding ?? this.useAccountPadding,
         socialLoginPadding: socialLoginPadding ?? this.socialLoginPadding,
         formTitlePadding: formTitlePadding ?? this.formTitlePadding,
         actionButtonPadding: actionButtonPadding ?? this.actionButtonPadding,
