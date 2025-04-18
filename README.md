@@ -1,6 +1,13 @@
 # Animated Login
 
-## Author: [Bahrican Yesil](https://github.com/bahricanyesil)
+## Original author: [Bahrican Yesil](https://github.com/bahricanyesil)
+
+
+
+增加注册页账号以及电话填写
+修改登录页为账号以及密码,以便 账号/邮箱/电话 来登录
+1.7.2版本生成的分支
+
 
 [![Pub](https://img.shields.io/pub/v/animated_login.svg)](https://pub.dartlang.org/packages/animated_login)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
